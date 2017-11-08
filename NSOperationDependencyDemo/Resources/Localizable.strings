@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  NSOperationDependencyDemo
+
+  Created by Amrendra on 08/11/17.
+  Copyright © 2017 Amrendra. All rights reserved.
+*/
+"please_wait" = "Please wait…";
+"network_error" = "Please check your network connection.";
+"ok_title" = "Ok";
+"cancel_title" = "Cancel";
+"cancel_title" = "Cancel";
+"provide_language" = "Provide language name to get git repository";
+"error_title" = "😳 Error 👇";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
