@@ -46,19 +46,49 @@ class RepositoryDetailViewController: UIViewController {
         }
     }
     
+     var queue = OperationQueue()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        #if PerformUsingOperation
+            var listOperation: ListOperation!
+            var contributorOperation: ContributionOperation!
 
-        //Call web service
-        if repo.issueList.isEmpty {
-            let urlString = String(format: Constants.API.ISSUE_URL, repo.ownerName, repo.userName)
-            self.viewModel.fetchIssueDetail(fromUrl: urlString)
-        }
+            //Call web service
+            if repo.issueList.isEmpty {
+                let urlString = String(format: Constants.API.ISSUE_URL, repo.ownerName, repo.userName)
+                listOperation = ListOperation(withUrl: urlString)
+                listOperation.viewModel = self.viewModel
+            }
+            
+            if repo.contributorsList.isEmpty {
+                let urlString = String(format: Constants.API.CONTRIBUTORS_URL, repo.ownerName, repo.userName)
+                contributorOperation = ContributionOperation(withUrl: urlString)
+                contributorOperation.viewModel = self.viewModel
+            }
+            //contributorOperation.addDependency(listOperation)
+            listOperation.addDependency(contributorOperation)
+
+            queue.addOperation(listOperation)
+            queue.addOperation(contributorOperation)
+            
+        #else
+            //Call web service
+            if repo.issueList.isEmpty {
+                let urlString = String(format: Constants.API.ISSUE_URL, repo.ownerName, repo.userName)
+                self.viewModel.fetchIssueDetail(fromUrl: urlString)
+            }
+            
+            if repo.contributorsList.isEmpty {
+                let urlString = String(format: Constants.API.CONTRIBUTORS_URL, repo.ownerName, repo.userName)
+                self.viewModel.fetchContributorDetail(fromUrl: urlString)
+            }
+        #endif
         
-        if repo.contributorsList.isEmpty {
-            let urlString = String(format: Constants.API.CONTRIBUTORS_URL, repo.ownerName, repo.userName)
-            self.viewModel.fetchContributorDetail(fromUrl: urlString)
-        }
+        
+        
+        
         
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80

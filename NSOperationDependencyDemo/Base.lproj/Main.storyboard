@@ -9,37 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--More View Controller-->
-        <scene sceneID="pn0-gb-fFS">
-            <objects>
-                <viewController id="eh2-Or-u9S" customClass="MoreViewController" customModule="NSOperationDependencyDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="v3Y-yx-f4q"/>
-                        <viewControllerLayoutGuide type="bottom" id="82F-sT-lYn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xIw-8W-kLf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Eh-SF-vme">
-                                <rect key="frame" x="167.5" y="298.5" width="40" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="7Eh-SF-vme" firstAttribute="centerY" secondItem="xIw-8W-kLf" secondAttribute="centerY" id="Jhw-RH-d9T"/>
-                            <constraint firstItem="7Eh-SF-vme" firstAttribute="centerX" secondItem="xIw-8W-kLf" secondAttribute="centerX" id="iUk-e5-qmD"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="Kdf-fc-CmU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lc4-DL-0HR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1306" y="433"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="hPs-fl-Nh0">
             <objects>
@@ -382,7 +351,6 @@
                     <connections>
                         <segue destination="721-sn-ViL" kind="relationship" relationship="viewControllers" id="pAx-kR-eLx"/>
                         <segue destination="S3d-lN-Nv2" kind="relationship" relationship="viewControllers" id="lXE-R3-9L9"/>
-                        <segue destination="eh2-Or-u9S" kind="relationship" relationship="viewControllers" id="4QT-wX-kAs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5E-h3-Lz0" userLabel="First Responder" sceneMemberID="firstResponder"/>

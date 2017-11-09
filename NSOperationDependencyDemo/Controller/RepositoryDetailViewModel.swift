@@ -30,13 +30,35 @@ class RepositoryDetailViewModel: ViewModelProtocol {
     }
 
     #if PerformUsingOperation
-    func fetchIssueDetail(fromUrl urlString: String) {
-       print("test Opertion calling")
+    func fetchIssueDetail(fromUrl urlString: String, handler:@escaping()->()) {
+        status = .Running
+        ServiceManager.sharedInstance.startWebRequest(withUrl: urlString) { (data: Data?, error: Error?) in
+           handler()//Inform to the operation about task has been finished
+            
+            guard data != nil else {
+                self.status = RequestStatus.setErrorDetail(error: error!)
+                return
+            }
+            //Parsing
+            let arr = JsonParsingUtility.parseIssuessList(fromData: data)
+            self.resultsArray = arr as [AnyObject]
+            self.status = .Success
+        }
     }
-    
-    func fetchContributorDetail(fromUrl urlString: String) {
-       print("test Opertion calling")
-    
+    func fetchContributorDetail(fromUrl urlString: String, handler:@escaping()->()) {
+        status = .Running
+        ServiceManager.sharedInstance.startWebRequest(withUrl: urlString) { (data: Data?, error: Error?) in
+            handler()//Inform to the operation about task has been finished
+            
+            guard data != nil else {
+                self.status = RequestStatus.Faild(error: error!)
+                return
+            }
+            //Parsing
+            let arr = JsonParsingUtility.parseContributorList(fromData: data)
+            self.resultsArray = arr as [AnyObject]
+            self.status = .Success
+        }
     }
     
     #else

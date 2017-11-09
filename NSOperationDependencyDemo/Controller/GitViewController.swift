@@ -33,7 +33,6 @@ class GitViewController: UIViewController {
 
                 case .Success:
                     self.activityIndicator.stopAnimating()
-                    //self.moveToRepositoryViewController(withResults: self.viewModel.resultsArray as! [RepositoryDM])
                 default:
                     print("viewModel.didChangedStatus default block run")
                 }
