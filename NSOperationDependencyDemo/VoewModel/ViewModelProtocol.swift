@@ -20,7 +20,7 @@ enum RequestStatus {
     }
 }
 
-protocol ViewModelProtocol: NSObjectProtocol {
+protocol ViewModelProtocol {
     
     var resultsArray: [AnyObject] { get }
     var didChangedResults:( ()->() )? { get set }

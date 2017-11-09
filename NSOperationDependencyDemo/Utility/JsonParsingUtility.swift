@@ -8,7 +8,7 @@
 
 import Foundation
 struct JsonParsingUtility {
-    
+ 
     static func parseRepositoryData(data: Data?)->[RepositoryDM] {
         
         do {
@@ -29,6 +29,42 @@ struct JsonParsingUtility {
         }
     }
     
+    static func parseIssuessList(fromData data: Data?)->[IssueDM] {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? [NSDictionary]
+            guard json != nil else {
+                return []
+            }
+            
+            var arrOfResults = [IssueDM]()
+            for dict in json! {
+                let model = IssueDM(withDictionary: dict)
+                arrOfResults.append(model)
+            }
+            return arrOfResults
+        } catch {
+            print("JsonParsingUtility parseIssuessList catch block")
+            return []
+        }
+    }
+    static func parseContributorList(fromData data: Data?)->[ContributorsDM] {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? [NSDictionary]
+            guard json != nil else {
+                return []
+            }
+            
+            var arrOfResults = [ContributorsDM]()
+            for dict in json! {
+                let model = ContributorsDM(withDictionary: dict)
+                arrOfResults.append(model)
+            }
+            return arrOfResults
+        } catch {
+            print("JsonParsingUtility parseContributorList catch block")
+            return []
+        }
+    }
     
 }
 

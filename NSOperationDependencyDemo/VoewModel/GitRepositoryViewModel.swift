@@ -40,7 +40,6 @@ class GitRepositoryViewModel: NSObject, ViewModelProtocol {
         let stringUrl = String.init(format: Constants.API.REPOSITORY_URL, language)
         ServiceManager.sharedInstance.startWebRequest(withUrl: stringUrl) { (data: Data?, error: Error?) in
             guard data != nil else {
-
                 self.status = RequestStatus.setErrorDetail(error: error!)
                 return
             }

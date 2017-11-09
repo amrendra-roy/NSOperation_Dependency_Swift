@@ -27,26 +27,4 @@ class RepositoryDM: NSObject {
         
         
     }
-    
-    
-    
 }
-
-
-//static NSString * const kNumber = @"number";
-//static NSString * const kTitle = @"title";
-//static NSString * const kState = @"state";
-//
-//@implementation IssuesDM
-//
-//@synthesize issueNumber;
-//@synthesize issueTitle;
-//@synthesize issueState;
-
-//static NSString * const kUserName = @"login";
-//static NSString * const kContributNumber = @"contributions";
-//
-//
-//@implementation ContributorsDM
-//@synthesize contributerName;
-//@synthesize contributionNumber;

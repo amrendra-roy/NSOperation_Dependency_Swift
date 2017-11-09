@@ -23,6 +23,17 @@ class RepoListTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RepositoryDetailVC" {
+            let vc = segue.destination as! RepositoryDetailViewController
+            vc.repo = sender as! RepositoryDM
+            vc.viewModel = RepositoryDetailViewModel()
+        }
+        
+    }
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
+    }
 }
 
 extension RepoListTableViewController {
@@ -42,5 +53,9 @@ extension RepoListTableViewController {
         let model = repoList[indexPath.row]
         cell.updateRepositoryCell(withModel: model)
         return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = repoList[indexPath.row]
+        self.performSegue(withIdentifier: "RepositoryDetailVC", sender: model)
     }
 }

@@ -12,9 +12,9 @@
 "cancel_title" = "Cancel";
 "provide_language" = "Provide language name to get git repository";
 "error_title" = "😳 Error 👇";
-"" = "";
-"" = "";
-"" = "";
+"basic_info_header_title" = "Basic Info";
+"issue_info_header_title" = "Issues List";
+"contributor_info_header_title" = "Contributors Detail";
 "" = "";
 "" = "";
 "" = "";
